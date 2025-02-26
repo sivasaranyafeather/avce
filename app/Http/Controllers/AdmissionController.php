@@ -103,10 +103,10 @@ class AdmissionController extends Controller
      */
     public function show(Request $request)
     {
-        $active = "list_admission";
+    $active = "list_admission";
+    $department = College::get();
 
-
-     return view('admission.list')->with(compact('active'));
+     return view('admission.list')->with(compact('active','department'));
     }
 
     /**
@@ -141,9 +141,15 @@ class AdmissionController extends Controller
                  })
                 ->select('admissions.*', 'colleges.name as departmentname');
 
-    if (!empty($request->admission_type)) {
-        $query->where('admissions.admission_type', $request->admission_type);
-    }
+               if (!empty($request->admission_type)) {
+                $query->where('admissions.admission_type', $request->admission_type);
+               }
+                if (!empty($request->department)) {
+                $query->where('admissions.department', $request->department);
+               }
+               if (!empty($request->regular)) {
+                $query->where('admissions.admission_reg', $request->regular);
+               }
 
     return DataTables::of($query) 
         ->addColumn('action', function ($result) {

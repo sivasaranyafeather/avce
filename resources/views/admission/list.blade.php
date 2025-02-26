@@ -13,12 +13,30 @@
  <div class="col-md-3">
     <label for="name">Type Of Admission:</label><br>
     <select name="admission_type" class="form-control" id="admission_type">
-    <option>Please Select</option>
+    <option value="">Please Select</option>
     <option value="counselling">Counselling</option>
     <option value="management">Mangement</option>
     </select>
 </div>
-
+<div class="col-md-3">
+     <label for="name">Branch Opted(Department):</label><br>
+                
+                 <select name="department" class="form-control  select2" id="department">
+                    <option value="">Select Department</option>
+                    @foreach($department as $dep) 
+                  <option value="{{$dep->id}}">{{$dep->name}}</option>
+                  @endforeach
+                  
+                </select>
+</div>
+  <div class="col-md-3 mb-3">
+                <label for="name">Regular / Lateral:</label><br>
+                 <select name="admission_reg" class="form-control" id="regular">
+                <option value="" >Please Select</option>
+                  <option value="regular">Regular</option>
+                  <option value="lateral">Lateral</option>
+                 </select>
+                </div>
   </div>
 
         </div>
@@ -109,6 +127,8 @@
                 url: "{{ route('list_admission') }}",
                 data: function(d) {
                     d.admission_type = $('#admission_type').val(); 
+                    d.department = $('#department').val(); 
+                    d.regular = $('#regular').val();
                 }
             },
             columns: [
@@ -129,7 +149,7 @@
         });
 
       
-        $('#admission_type').on('change', function() {
+        $('#admission_type,#department,#regular').on('change', function() {
             table.ajax.reload();
         });
     });
