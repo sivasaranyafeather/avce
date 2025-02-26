@@ -12,10 +12,10 @@ class Admission extends Model
     protected $fillable = [
     'reg_no',
     'name',
-    'date',
+    'date', 
     'admission_type',
     'department',
-    'admission_type',
+    'admission_reg',
     'status',
     'email',
     'father_name',

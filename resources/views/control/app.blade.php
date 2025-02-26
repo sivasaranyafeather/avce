@@ -132,6 +132,15 @@
                  </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('show_admission') }}" class="nav-link @if ($active == 'list_admission') active @endif">
+                <i class="nav-icon fas fa-award"></i>
+                <p>
+                 List Admission
+                <span class="badge badge-info right"></span>
+                 </p>
+              </a>
+            </li>
 
             
           </ul>

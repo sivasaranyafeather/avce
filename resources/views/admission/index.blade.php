@@ -38,7 +38,7 @@
         
               <h2 class="login-box-msg">Registration Form</h2>
 
-            <form action="route('admission.store')" method="post">
+            <form action="{{ route('admission.store') }}" method="post">
                 @csrf
   <div class="card card-outline " >
             
@@ -82,7 +82,7 @@
 
                  <div class="col-md-3 mb-3">
                 <label for="name">Regular / Lateral:</label><br>
-                 <select name="admission_type" class="form-control" id="admission_type">
+                 <select name="admission_reg" class="form-control" id="admission_type">
                 <option value="" >Please Select</option>
                   <option value="regular">Regular</option>
                   <option value="lateral">Lateral</option>
@@ -93,7 +93,7 @@
                 <label for="name">Status:</label><br>
                  <select name="status" class="form-control" id="status">
                 <option value="" >Please Select</option>
-                  <option value="first_graduate">First Graduate</option>
+                  <option value="first graduate">First Graduate</option>
                   <option value="regular">Regular</option>
                  </select>
                 </div>
@@ -132,9 +132,9 @@
                  <!-- gender-->
                   <div class="col-md-3 mb-3">
                   <label for="name">Gender:</label><br>
-                   <input type="radio" id="gender" name="gender" value="30">
+                   <input type="radio" id="gender" name="gender" value="male">
                    <label>Male</label>
-                   <input type="radio" id="gender" name="gender" value="60">
+                   <input type="radio" id="gender" name="gender" value="female">
                    <label for="name">Female</label>
                    </div>
                    <!--contact Number-->
@@ -190,6 +190,7 @@
                         <div class="col-md-3 mb-3">
                 <label for="name">Marks Obtained:</label><br>
                 <select class="form-control" name="marks_obtained" id="marks">
+                  <option value="">Please Select</option>
                    <option value="hsc">HSC</option>
                    <option value="ploytechnic">Polytechnic</option>
                 </select>
@@ -197,9 +198,9 @@
                  <!-- medium of study -->
                    <div class="col-md-4 mb-3">
                    <label for="name">Medium of Study:</label><br>
-                   <input type="radio" id="study" name="study" value="">
+                   <input type="radio" id="study" name="study" value="tamil">
                    <label>Tamil Medium</label>
-                   <input type="radio" id="study" name="study" value="">
+                   <input type="radio" id="study" name="study" value="english">
                    <label for="name">English Medium</label>
                     </div>
                     <!-- school/polytechnic -->
@@ -299,8 +300,8 @@
       <div class="col-md-3 mb-3">
                 <label for="name">Transport:</label><br>
                 <select class="form-control" name="transport" id="transport">
-                   <option value="direct">Hostel</option>
-                   <option value="website">Dayscholar</option>
+                   <option value="hostel">Hostel</option>
+                   <option value="dayscholar">Dayscholar</option>
                 </select>
                  </div>
                   <div class="col-md-3 mb-3">
@@ -313,28 +314,28 @@
                 <div class="col-md-3 mb-3">
                 <label for="name">SC/ST:</label><br>
                 <select class="form-control" name="sc_st" id="Sc_st">
-                   <option value="yse">Yes</option>
+                   <option value="yes">Yes</option>
                    <option value="no">No</option>
                 </select>
                  </div>
                  <div class="col-md-3 mb-3">
                 <label for="name">BC:</label><br>
                 <select class="form-control" name="bc" id="BC">
-                   <option value="yse">Yes</option>
+                   <option value="yes">Yes</option>
                    <option value="no">No</option>
                 </select>
                  </div>
                   <div class="col-md-3 mb-3">
                 <label for="name">MBC:</label><br>
                 <select class="form-control" name="mbc" id="MBC">
-                   <option value="yse">Yes</option>
+                   <option value="yes">Yes</option>
                    <option value="no">No</option>
                 </select>
                  </div>
                  <div class="col-md-3 mb-3">
                 <label for="name">OC:</label><br>
                 <select class="form-control" name="oc" id="oC">
-                   <option value="yse">Yes</option>
+                   <option value="yes">Yes</option>
                    <option value="no">No</option>
                 </select>
                  </div>

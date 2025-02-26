@@ -53,4 +53,7 @@ Route::get('/data-all-college', [CollegeController::class, 'data_all_college'])-
  //admission
  Route::get('/index_admission',[AdmissionController::class,'index'])->name('index_admission');
  Route::post('/index_admission',[AdmissionController::class,'store'])->name('admission.store');
+ Route::get('/show_admission',[AdmissionController::class,'show'])->name('show_admission');
 
+ // Admission AJAX Data
+Route::get('/list_admission', [AdmissionController::class, 'list_admission'])->name('list_admission');
