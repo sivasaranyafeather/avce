@@ -15,6 +15,7 @@ Route::get('/', function(){
     return redirect()->route('login');
 });
 
+
 //login routes
 Route::get('login',[AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
@@ -50,6 +51,7 @@ Route::get('/delete_college/{id}', [CollegeController::class, 'destroy'])->name(
 // college AJAX Data
 Route::get('/data-all-college', [CollegeController::class, 'data_all_college'])->name('data_all_college');
 
+
  //admission
  Route::get('/index_admission',[AdmissionController::class,'index'])->name('index_admission');
  Route::post('/index_admission',[AdmissionController::class,'store'])->name('admission.store');
@@ -57,3 +59,8 @@ Route::get('/data-all-college', [CollegeController::class, 'data_all_college'])-
 
  // Admission AJAX Data
 Route::get('/list_admission', [AdmissionController::class, 'list_admission'])->name('list_admission');
+//edit admission
+Route::get('/edit_register/{id}', [AdmissionController::class, 'edit'])->name('edit_register');
+Route::post('/update_register', [AdmissionController::class, 'update'])->name('admission.update');
+//delete admission
+Route::get('/delete_register/{id}', [AdmissionController::class, 'destroy'])->name('delete_register');

@@ -112,9 +112,12 @@ class AdmissionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Admission $admission)
+    public function edit(Request $request,$id)
     {
-        //
+       $active = 'list_admission';
+       $data = Admission::find($id);
+     $department = College::get();
+      return view('admission.edit')->with(compact('active','department','data'));
     }
 
     /**
@@ -122,15 +125,66 @@ class AdmissionController extends Controller
      */
     public function update(Request $request, Admission $admission)
     {
-        //
+    Admission::where('id',$request->id)
+           ->update([
+        'reg_no'   => $request['reg_no'],
+        'name'   => $request['name'],
+        'date' => Carbon::parse($request['date'])->format('Y-m-d'),
+        'admission_type'   => $request['admission_type'],
+        'department'   => $request['department'],
+        'admission_reg'   => $request['admission_reg'],
+        'status'   => $request['status'],
+        'email'   => $request['email'],
+        'father_name'   => $request['father_name'],
+        'father_occupation'   => $request['father_occupation'],
+        'mother_name'   => $request['mother_name'],
+        'mother_occupation'   => $request['mother_occupation'],
+        'annual_income'   => $request['annual_income'],
+        'date_of_birth'   => Carbon::parse($request['date_of_birth'])->format('Y-m-d'),
+        'gender'   => $request['gender'],
+        'contact_number'   => $request['contact_number'],
+        'alternative_number'   => $request['alternative_number'],
+        'community'   => $request['community'],
+        'house_no'   => $request['house_no'],
+        'street_name'   => $request['street_name'],
+        'place'   => $request['place'],
+        'pincode'   => $request['pincode'],
+        'marks'   => $request['marks_obtained'],
+        'study'   => $request['study'],
+        'school_polytechnic'   => $request['school_polytechnic'],
+        'maths'   => $request['maths'],
+        'physics'   => $request['physics'],
+        'chemistry'   => $request['chemistry'],
+        'v_sem'   => $request['v_sem'],
+        'vi_sem'   => $request['vi_sem'],
+        'total'   => $request['total'],
+        'percentage'   => $request['percentage'],
+        'referred_by'   => $request['referred_by'],
+        'ref_name'   => $request['ref_name'],
+        'con_number'   => $request['con_number'],
+        'transport'   => $request['transport'],
+        'fg'   => $request['fg'],
+        'Sc_st'   => $request['sc_st'],
+        'bc'   => $request['bc'],
+        'mbc'   => $request['mbc'],
+        'oc'   => $request['oc'],
+
+    
+    ]);
+    // Flash success message and redirect
+    Session::flash('successmessage', "Admission  Details Updated Successfully!");
+    return redirect()->back();
+    
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Admission $admission)
+    public function destroy($id)
     {
-        //
+     Admission::find($id)->delete(); 
+     Session::flash('infomessage', "Admission Deleted Successfully");
+     return redirect()->back();
     }
      public function list_admission(Request $request)
     {
@@ -152,18 +206,22 @@ class AdmissionController extends Controller
                }
 
     return DataTables::of($query) 
-        ->addColumn('action', function ($result) {
-            return '
-                <a href="javascript:void(0)" data-id="' . $result->id . '" class="showcollege btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit!">
-                    <i class="fa fa-edit"></i>
-                </a>
-                &nbsp;
-                <a href="javascript:void(0)" data-id="' . $result->id . '" class="deletecollege btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete!">
-                    <i class="fa fa-trash"></i>
-                </a>
-                &nbsp;';
-        })
-        ->make(true);
+       ->addColumn('action', function ($result) {
+    return '
+        <a href="' . url('/edit_register/' . $result->id) . '" class="btn btn-primary" 
+            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit!">
+            <i class="fa fa-edit"></i>
+        </a>
+        &nbsp;&nbsp; 
+        <a href="' . url('/delete_register/' . $result->id) . '" class="btn btn-danger" 
+            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete!" 
+            onclick="return confirm(\'Are you sure you want to delete this record?\');">
+            <i class="fa fa-trash"></i>
+        </a>
+        &nbsp;';
+})
+->make(true);
+
 }
 
 
