@@ -20,13 +20,14 @@ Route::get('/', function(){
 Route::get('login',[AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
 
+Route::middleware(['is-active'])->group(function () {
 
 
 //register
 Route::get('/register', [AuthController::class, 'registration'])->name('register');
 Route::post('/post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
 Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
-
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //user
  Route::get('/all_user', [UserController::class, 'all_user'])->name('all_user');
@@ -54,7 +55,7 @@ Route::get('/data-all-college', [CollegeController::class, 'data_all_college'])-
 
  //admission
  Route::get('/index_admission',[AdmissionController::class,'index'])->name('index_admission');
- Route::post('/index_admission',[AdmissionController::class,'store'])->name('admission.store');
+ Route::post('/store_admission',[AdmissionController::class,'store'])->name('admission.store');
  Route::get('/show_admission',[AdmissionController::class,'show'])->name('show_admission');
 
  // Admission AJAX Data
@@ -64,3 +65,4 @@ Route::get('/edit_register/{id}', [AdmissionController::class, 'edit'])->name('e
 Route::post('/update_register', [AdmissionController::class, 'update'])->name('admission.update');
 //delete admission
 Route::get('/delete_register/{id}', [AdmissionController::class, 'destroy'])->name('delete_register');
+});

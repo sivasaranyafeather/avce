@@ -9,7 +9,7 @@
           <!-- /.login-logo -->
           <div class="card card-outline card-primary">
             <div class="card-header text-center" style="background-color: #020e29; color: white;">
-              <h4>Feather Softwares</h4>
+              <h4>AVCE Admission Dashboard</h4>
             </div>
             <div class="card-body">
               <p class="login-box-msg">Edit Registration</p>

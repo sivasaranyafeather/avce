@@ -12,7 +12,8 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Admission;
+use App\Models\College;
 
 
 class AuthController extends Controller
@@ -51,8 +52,10 @@ class AuthController extends Controller
    
     if (Auth::check()) {
       $active  = 'dashboard';
-      
-      return view('control.dashboard')->with(compact('active'));
+      $users = User::count();
+      $admission = Admission::count();
+      $college = College::count();
+      return view('control.dashboard')->with(compact('active','users','admission','college'));
     }
     Session::flash('errormessage', "Opps! You do not have Access. Login to Gain Access");
     return redirect("login");
@@ -173,5 +176,13 @@ class AuthController extends Controller
     Session::flash('infomessage', "User Deleted Successfully");
     return redirect()->back();
     }
+     public function logout(): RedirectResponse
+  {
+    Session::flush();
+    Auth::logout();
+
+    Session::flash('infomessage', "Logout successfull !");
+    return Redirect('login');
+  }
 }
     

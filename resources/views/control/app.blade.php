@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Feather Softwares</title>
+  <title>AVCE Admission Dashboard</title>
 
   
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -81,7 +81,7 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="btn nav-link show_update navhover" 
+          <a class="btn nav-link show_update navhover"  href="{{ route('logout') }}"
           >Logout</a>
         </li>
       </ul>
@@ -91,7 +91,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4 back-color">
        <a href="" class="brand-link">
         <img src="" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Feather Softwares</span>
+        <span class="brand-text font-weight-light">AVCE Admission Dashborad</span>
       </a>
                       
       <div class="sidebar">
