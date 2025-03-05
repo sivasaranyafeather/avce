@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\User;
 use App\Models\College;
 use Carbon\Carbon;
+use App\Models\Staff;
 
 
 class AdmissionController extends Controller
@@ -25,7 +26,8 @@ class AdmissionController extends Controller
 
     $active = "admission";
     $department = College::get();
-    return view('admission.index')->with(compact('active','department'));
+    $staff = Staff::get();
+    return view('admission.index')->with(compact('active','department','staff'));
     }
 
     /**
@@ -47,7 +49,7 @@ class AdmissionController extends Controller
       'name'     => 'required',
 
     ]);
-
+    $user_id = Auth::user()->id;
     $data  = $request->all();
     Admission::create([
         'reg_no'   => $data['reg_no'],
@@ -68,6 +70,7 @@ class AdmissionController extends Controller
         'contact_number'   => $data['contact_number'],
         'alternative_number'   => $data['alternative_number'],
         'community'   => $data['community'],
+        'com_others' => $data['com_others'],
         'house_no'   => $data['house_no'],
         'street_name'   => $data['street_name'],
         'place'   => $data['place'],
@@ -78,6 +81,7 @@ class AdmissionController extends Controller
         'maths'   => $data['maths'],
         'physics'   => $data['physics'],
         'chemistry'   => $data['chemistry'],
+        'hsc_percentage'   => $data['hsc_percentage'],
         'v_sem'   => $data['v_sem'],
         'vi_sem'   => $data['vi_sem'],
         'total'   => $data['total'],
@@ -85,12 +89,15 @@ class AdmissionController extends Controller
         'referred_by'   => $data['referred_by'],
         'ref_name'   => $data['ref_name'],
         'con_number'   => $data['con_number'],
+        'staff_name'   => $data['staff_name'],
+        'staff_number'   => $data['staff_number'],
         'transport'   => $data['transport'],
         'fg'   => $data['fg'],
         'Sc_st'   => $data['sc_st'],
         'bc'   => $data['bc'],
         'mbc'   => $data['mbc'],
         'oc'   => $data['oc'],
+        'user_id' => $user_id,
 
     
     ]);
@@ -191,6 +198,10 @@ class AdmissionController extends Controller
     {
       
    if ($request->ajax()) {
+     $role = Auth::user()->role;
+     $id = Auth::user()->id;
+     if($role =='admin')
+     {
     $query = Admission::leftJoin('colleges', function($join) {
                     $join->on('admissions.department', '=', 'colleges.id'); 
                  })
@@ -205,6 +216,25 @@ class AdmissionController extends Controller
                if (!empty($request->regular)) {
                 $query->where('admissions.admission_reg', $request->regular);
                }
+            }
+            else{
+                $query = Admission::where('user_id',$id)->
+                leftJoin('colleges', function($join) {
+                    $join->on('admissions.department', '=', 'colleges.id'); 
+                 })
+                ->select('admissions.*', 'colleges.name as departmentname');
+
+               if (!empty($request->admission_type)) {
+                $query->where('admissions.admission_type', $request->admission_type);
+               }
+                if (!empty($request->department)) {
+                $query->where('admissions.department', $request->department);
+               }
+               if (!empty($request->regular)) {
+                $query->where('admissions.admission_reg', $request->regular);
+               }
+
+            }
 
     return DataTables::of($query) 
        ->addColumn('action', function ($result) {
@@ -213,13 +243,20 @@ class AdmissionController extends Controller
             data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit!">
             <i class="fa fa-edit"></i>
         </a>
-        &nbsp;&nbsp; 
+ 
         <a href="' . url('/delete_register/' . $result->id) . '" class="btn btn-danger" 
             data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete!" 
             onclick="return confirm(\'Are you sure you want to delete this record?\');">
             <i class="fa fa-trash"></i>
         </a>
-        &nbsp;';
+        
+
+         <a href="' . url('/print_register/' . $result->id) . '" class="btn btn-info" 
+            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="print!">
+            <i class="fa fa-edit"></i>
+        </a>
+        ';
+
 })
 ->make(true);
 
@@ -228,4 +265,16 @@ class AdmissionController extends Controller
 
 
      }
+
+      /**
+     * Display the specified resource.
+     */
+    public function print(Request $request,$id)
+    {
+      $active = "list_admission";
+       $data = Admission::findOrFail($id);
+
+     return view('admission.print')->with(compact('active','data'));
+  
+    }
 }

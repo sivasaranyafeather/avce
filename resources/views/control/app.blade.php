@@ -141,6 +141,24 @@
                  </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('index_education') }}" class="nav-link @if ($active == 'education') active @endif">
+                <i class="nav-icon fas fa-award"></i>
+                <p>
+                 TNEA details
+                <span class="badge badge-info right"></span>
+                 </p>
+              </a>
+            </li>
+             <li class="nav-item">
+              <a href="{{ route('index_staff') }}" class="nav-link @if ($active == 'staff') active @endif">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                 Staff Details
+                <span class="badge badge-info right"></span>
+                 </p>
+              </a>
+            </li>
 
             
           </ul>

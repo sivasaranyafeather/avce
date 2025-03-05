@@ -47,12 +47,12 @@
                     <div class="row">
                         <h4 class="text-center">Personal Details</h4>
                 <div class="col-md-3 mb-3">
-                  <label for="name">Registration Number:</label><br>
-                  <input type="text" class="form-control"  name="reg_no" placeholder="Registration Number">
+                  <label for="name">EMIS Number:</label><br>
+                  <input type="text" class="form-control"   name="reg_no" placeholder="Registration Number">
                 </div>
                  <div class="col-md-3 mb-3">
                   <label for="name">Name:</label><br>
-                 <input type="text" class="form-control"  name="name" placeholder="Student Name">
+                 <input type="text" class="form-control" required  name="name" placeholder="Student Name">
                   
                 </div>
 
@@ -62,7 +62,7 @@
                 </div>
                  <div class="col-md-3 mb-3">
                 <label for="name">Type Of Admission:</label><br>
-                 <select name="admission_type" class="form-control" id="admission_type">
+                 <select name="admission_type" class="form-control" required id="admission_type">
                   <option value="counselling">Counselling</option>
                   <option value="management">Mangement</option>
                
@@ -71,7 +71,7 @@
                  <div class="col-md-3 mb-3">
                 <label for="name">Branch Opted(Department):</label><br>
                 
-                 <select name="department" class="form-control  select2" id="department">
+                 <select name="department" required class="form-control  select2" id="department">
                     <option value="">Select Department</option>
                     @foreach($department as $dep) 
                   <option value="{{$dep->id}}">{{$dep->name}}</option>
@@ -82,7 +82,7 @@
 
                  <div class="col-md-3 mb-3">
                 <label for="name">Regular / Lateral:</label><br>
-                 <select name="admission_reg" class="form-control" id="admission_type">
+                 <select name="admission_reg" required class="form-control" id="admission_type">
                 <option value="" >Please Select</option>
                   <option value="regular">Regular</option>
                   <option value="lateral">Lateral</option>
@@ -91,7 +91,7 @@
 
                  <div class="col-md-3 mb-3">
                 <label for="name">Status:</label><br>
-                 <select name="status" class="form-control" id="status">
+                 <select name="status" required  class="form-control" id="status">
                 <option value="" >Please Select</option>
                   <option value="first graduate">First Graduate</option>
                   <option value="regular">Regular</option>
@@ -100,11 +100,11 @@
 
                  <div class="col-md-3 mb-3">
                   <label for="name">Email:</label><br>
-                 <input type="mail" class="form-control"  name="email" placeholder="Enter Email">
+                 <input type="mail" class="form-control"  required  name="email" placeholder="Enter Email">
                  </div>
                  <div class="col-md-3 mb-3">
                   <label for="name">Father Name:</label><br>
-                 <input type="text" class="form-control"  name="father_name" placeholder="Father Name">
+                 <input type="text" class="form-control"  required  name="father_name" placeholder="Father Name">
                   </div>
                  <div class="col-md-3 mb-3">
                   <label for="name">Father Occupation:</label><br>
@@ -112,7 +112,7 @@
                  </div>
                  <div class="col-md-3 mb-3">
                   <label for="name">Mother Name:</label><br>
-                 <input type="text" class="form-control"  name="mother_name" placeholder="Mother Name">
+                 <input type="text" class="form-control" required  name="mother_name" placeholder="Mother Name">
                   </div>
                   <div class="col-md-3 mb-3">
                   <label for="name">Mother Occupation:</label><br>
@@ -122,12 +122,12 @@
                  <!--annual income-->
                   <div class="col-md-3 mb-3">
                   <label for="name">Annual Income:</label><br>
-                 <input type="text" class="form-control"  name="annual_income" placeholder="Annual Income">
+                 <input type="text" class="form-control"  required  name="annual_income" placeholder="Annual Income">
                  </div>
                  <!-- date of birth -->
                   <div class="col-md-3 mb-3">
                   <label for="name">Date Of Birth:</label><br>
-                  <input type="date" class="form-control"  required name="date_of_birth">
+                  <input type="date" class="form-control" required  required name="date_of_birth">
                 </div>
                  <!-- gender-->
                   <div class="col-md-3 mb-3">
@@ -140,7 +140,7 @@
                    <!--contact Number-->
                    <div class="col-md-3 mb-3">
                   <label for="name">Contact Number:</label><br>
-                  <input type="tel" class="form-control"  required name="contact_number">
+                  <input type="tel" class="form-control"  required  required name="contact_number">
                 </div>
                 <!--contact Number-->
                    <div class="col-md-3 mb-3">
@@ -150,7 +150,20 @@
               <!-- Community-->
                 <div class="col-md-3 mb-3">
                 <label for="name">Community:</label><br>
-                 <input type="Text" class="form-control"  required name="community">
+                 <select name="community" class="form-control" required  id="community">
+                <option value="" >Please Select</option>
+                  <option value="bc">BC</option>
+                  <option value="oc">OC</option>
+                  <option value="sc_st">SC/ST</option>
+                  <option value="dnc">DNC</option>
+                  <option value="mbc">MBC</option>
+                  <option value="others">Others</option>
+                 </select>
+                </div>
+                 <!--others-->
+                   <div class="col-md-3 mb-3" style="display:none;"id="com_others">
+                  <label for="name">Others:</label><br>
+                  <input type="text" class="form-control" id="other_community" required name="com_others">
                 </div>
 
                 <!--address-->
@@ -166,7 +179,7 @@
                  <!--Street Name-->
                  <div class="col-md-3 mb-3">
                 <label for="name">Street Name:</label><br>
-                 <input type="text" class="form-control"  required name="street_name">
+                 <input type="text" class="form-control" required  required name="street_name">
                  </div>
                  <!--Place-->
                  <div class="col-md-3 mb-3">
@@ -176,7 +189,7 @@
                  <!--Place-->
                  <div class="col-md-3 mb-3">
                 <label for="name">Pincode & District:</label><br>
-                 <input type="text" class="form-control"  required name="pincode">
+                 <input type="text" class="form-control" required  required name="pincode">
                  </div>
 
                 </div>
@@ -218,18 +231,24 @@
                        
                 <div class="col-md-3 mb-3">
                 <label for="name">Maths:</label><br>
-                 <input type="number" class="form-control"   name="maths">
+                 <input type="number" class="form-control" id="maths"  name="maths">
                  </div>
                  <!-- physics -->
                   <div class="col-md-3 mb-3">
                 <label for="name">Physics:</label><br>
-                 <input type="number" class="form-control"   name="physics">
+                 <input type="number" class="form-control" id="physics"  name="physics">
                  </div>
                  <!-- Chemistry -->
                   <div class="col-md-3 mb-3">
                 <label for="name">Chemistry:</label><br>
-                 <input type="number" class="form-control"   name="chemistry">
+                 <input type="number" class="form-control"  id="chemistry" name="chemistry">
                  </div>
+                  <!--percentage -->
+                  <div class="col-md-3 mb-3">
+    <label for="hsc_percentage">Percentage (%):</label>
+    <input type="text" class="form-control" id="hsc_percentage" name="hsc_percentage" readonly>
+     <span id="eligible"></span>
+</div>
                      </div>
                   </div>
                    <!-- Plytechnic -->
@@ -254,6 +273,7 @@
                   <div class="col-md-3 mb-3">
                 <label for="name">Percentage (%):</label><br>
                  <input type="number" class="form-control"   name="percentage">
+                
                  </div>
                  
                      </div>
@@ -277,20 +297,51 @@
                 </select>
                  </div>
                  <!-- VI sem -->
-                  <div class="col-md-3 mb-3">
+                  <div class="col-md-3 mb-3 ref_detail" style="display:none;"  >
                 <label for="name">Referred By(Name):</label><br>
                  <input type="text" class="form-control"   name="ref_name">
                  </div>
                  <!--semtotal -->
-                  <div class="col-md-3 mb-3">
+                  <div class="col-md-3 mb-3 ref_detail" style="display:none;">
                 <label for="name">Contact Number:</label><br>
                  <input type="number" class="form-control"   name="con_number">
                  </div>
+
+
+                 <div class="col-md-3 mb-3 staff_detail" style="display:none;">
+                <label for="name">Referred By(Name):</label><br>
+                <select class="form-control" name="staff_name" id="staff_name" >
+                   <option value="">Please Select</option>
+                   @foreach($staff as $st)
+                   <option value="{{$st->id}}" data-number="{{$st->contact_number}}" >{{$st->name}}</option>
+                  @endforeach
+                </select>
+                 </div>
+
+                  <div class="col-md-3 mb-3 staff_detail" style="display:none;">
+                <label for="name">Contact Number:</label><br>
+                 <input type="number" class="form-control" readonly id="staff_number"  name="staff_number">
+                 </div>
+
                  
+
+
                      </div>
                      <hr>
                   </div>
 
+                <!-- Education Deatils -->
+
+            <div class="container">
+              <div class="row">
+                <h4 class="text-center">Certificate Details</h4>
+                <div class="col-md-3 mb-3">
+                <label for="name">12th marksheet(original):</label><br>
+                 <input type="checkbox" id="12th_marksheet" name="12th_marksheet" value="12th_marksheet">
+                 </div>
+                  </div>
+                <hr>
+               </div>
 
                   <!-- Scholarship Deatils -->
 
@@ -412,9 +463,87 @@ $('#marks').on('change', function() {
  $('#hsc_mark').hide();
  $('#poly_mark').show();
  }
- 
+ });
+ //community
+$('#community').on('change',function(){
+  var community = $(this).val();
+  if(community == 'others')
+ {
+ $('#com_others').show();
+ $("#other_community").prop('required',true);
+ }
+ else
+ {
+ $('#com_others').hide();
+ $("#other_community").prop('required',false);
+ }
+ });
+//reference
+$('#referred_by').on('change',function(){
+  var refered_val = $(this).val();
+  if(refered_val == 'staff')
+ {
+ $('.ref_detail').hide();
+ $('.staff_detail').show();
+ }
+ else
+ {
+ $('.ref_detail').show();
+  $('.staff_detail').hide();
+ }
+ });
 
+$('#staff_name').on('change',function(){
+ var con_number = $(this).find(':selected').data('number'); 
+$('#staff_number').val(con_number);
+  });
+
+  //marks percentage
+// Marks percentage calculation
+$('#maths, #physics, #chemistry, #community').on('change', function() {
+    percentage();
 });
+
+function percentage() {
+    var maths = parseFloat($('#maths').val()) || 0;
+    var physics = parseFloat($('#physics').val()) || 0;
+    var chemistry = parseFloat($('#chemistry').val()) || 0;
+
+    var totalMarks = maths + physics + chemistry; 
+    var percentage = (totalMarks / 300) * 100; 
+
+    $('#hsc_percentage').val(percentage.toFixed(2)); 
+
+    var community = $('#community').val();
+    
+    if (community == 'bc' || community == 'mbc' || community == 'dnc') {
+        if (percentage >= 40) {
+            $("#eligible").text("Eligible for Counseling").css("color", "green");
+        } else {
+            $("#eligible").text("Not Eligible for Counseling").css("color", "red");
+        }
+    } 
+    else if (community == 'oc') {
+        if (percentage >= 45) {
+            $("#eligible").text("Eligible for Counseling").css("color", "green");
+        } else {
+            $("#eligible").text("Not Eligible for Counseling").css("color", "red");
+        }
+    } 
+    else if (community == 'sc_st') {
+        if (percentage >= 35) {
+            $("#eligible").text("Eligible for Counseling").css("color", "green");
+        } else {
+            $("#eligible").text("Not Eligible for Counseling").css("color", "red");
+        }
+    }
+}
+
+
+    
+    
+
+
     });
 </script>
 

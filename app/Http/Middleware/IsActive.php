@@ -19,7 +19,7 @@ class IsActive
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->status === '1') {
+        if (!Auth::check()) {
             Session::flash('errormessage', "Oops! Your account is inactive.");
             return redirect()->route('login');
         }

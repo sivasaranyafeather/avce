@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
          $this->app->bind('is-active', function ($app) {
-            return new IsActive(); // Return the IsActive middleware instance
+            return new IsActive(); 
         });
     }
 

@@ -250,6 +250,7 @@
                 </select>
                  </div>
                  <!-- VI sem -->
+                  <div>
                   <div class="col-md-3 mb-3">
                 <label for="name">Referred By(Name):</label><br>
                  <input type="text" class="form-control" value="{{$data->ref_name}}"  name="ref_name">
@@ -258,6 +259,7 @@
                   <div class="col-md-3 mb-3">
                 <label for="name">Contact Number:</label><br>
                  <input type="number" class="form-control" value="{{$data->con_number}}"   name="con_number">
+                 </div>
                  </div>
                  
                      </div>

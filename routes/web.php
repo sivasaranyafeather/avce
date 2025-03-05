@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CollegeController;
 use App\Http\Controllers\AdmissionController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\EducationController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -49,7 +51,12 @@ Route::post('/update_college', [CollegeController::class, 'update'])->name('coll
 Route::get('/delete_college/{id}', [CollegeController::class, 'destroy'])->name('delete_college');
 
 
+
+
 // college AJAX Data
+
+
+
 Route::get('/data-all-college', [CollegeController::class, 'data_all_college'])->name('data_all_college');
 
 
@@ -65,4 +72,25 @@ Route::get('/edit_register/{id}', [AdmissionController::class, 'edit'])->name('e
 Route::post('/update_register', [AdmissionController::class, 'update'])->name('admission.update');
 //delete admission
 Route::get('/delete_register/{id}', [AdmissionController::class, 'destroy'])->name('delete_register');
+//admission print
+Route::get('/print_register/{id}', [AdmissionController::class, 'print'])->name('print_register');
 });
+
+//Staff 
+Route::get('/index_staff',[StaffController::class,'index'])->name('index_staff');
+Route::post('/staff_store', [StaffController::class, 'store'])->name('staff.store');
+Route::get('/edit_staff/{id}', [StaffController::class, 'edit'])->name('edit.staff');
+Route::post('/update_staff', [StaffController::class, 'update'])->name('staff.update');
+Route::get('/delete_staff/{id}', [StaffController::class, 'destroy'])->name('delete_staff');
+// staff AJAX Data
+ Route::get('/data-all-staff', [StaffController::class, 'data_all_staff'])->name('data_all_staff');
+
+ //Education
+ Route::get('/index_education',[EducationController::class,'index'])->name('index_education');
+ Route::post('/education_store', [EducationController::class, 'store'])->name('education.store');
+ Route::get('/edit_education/{id}', [EducationController::class, 'edit'])->name('edit.education');
+ Route::post('/update_education', [EducationController::class, 'update'])->name('education.update');
+ Route::get('/delete_education/{id}', [EducationController::class, 'destroy'])->name('delete_education');
+ // education AJAX Data
+ Route::get('/data-all-education', [EducationController::class, 'data_all_education'])->name('data_all_education');
+

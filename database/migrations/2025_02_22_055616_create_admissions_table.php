@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('contact_number');
             $table->string('alternative_number')->nullable();
             $table->string('community');
+            $table->string('com_others')->nullable();
             $table->string('house_no')->nullable();
             $table->string('street_name')->nullable();
             $table->string('place');
@@ -41,6 +42,7 @@ return new class extends Migration
             $table->integer('maths')->nullable();
             $table->integer('physics')->nullable();
             $table->integer('chemistry')->nullable();
+            $table->decimal('hsc_percentage',5, 2)->nullable();
             $table->integer('v_sem')->nullable();
             $table->integer('vi_sem')->nullable();
             $table->integer('total')->nullable();
@@ -48,12 +50,16 @@ return new class extends Migration
             $table->string('referred_by')->nullable();
             $table->string('ref_name')->nullable();
             $table->string('con_number')->nullable();
+            $table->string('staff_name')->nullable();
+            $table->string('staff_number')->nullable();
             $table->string('transport')->nullable();
             $table->string('fg')->nullable();
             $table->string('Sc_st');
             $table->string('bc');
             $table->string('mbc');
             $table->string('oc');
+            $table->integer('user_id');
+
         });
     }
 

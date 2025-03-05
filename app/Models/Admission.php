@@ -28,6 +28,7 @@ class Admission extends Model
     'contact_number',
     'alternative_number',
     'community',
+    'com_others',
     'house_no',
     'street_name',
     'place',
@@ -38,18 +39,22 @@ class Admission extends Model
     'maths',
     'physics',
     'chemistry',
+    'hsc_percentage',
     'v_sem',
     'vi_sem',
     'total',
     'percentage',
     'referred_by',
     'ref_name',
-    'con_number',
+   'con_number',
+    'staff_name',
+    'staff_number',
     'transport',
     'fg',
     'Sc_st',
     'bc',
     'mbc',
-    'oc'
+    'oc',
+    'user_id'
     ];
 }
