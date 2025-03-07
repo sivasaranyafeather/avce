@@ -27,13 +27,23 @@ class ReportController extends Controller
        $department = College::get();
        return view('report.list')->with(compact('active' ,'department'));
     }
-
-
-public function list_ad_student(Request $request)
-{
+    public function list_ad_student(Request $request)
+    {
     if ($request->ajax()) {
         $role = Auth::user()->role;
         $id = Auth::user()->id;
+        
+        
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+
+        // if (!empty($start_date)) {
+        //     $start_date = Carbon::createFromFormat('d/m/Y', $start_date)->format('Y-m-d');
+        // }
+
+        // if (!empty($end_date)) {
+        //     $end_date = Carbon::createFromFormat('d/m/Y', $end_date)->format('Y-m-d');
+        // }
 
         $query = Admission::leftJoin('colleges', function ($join) {
                     $join->on('admissions.department', '=', 'colleges.id');
@@ -41,6 +51,7 @@ public function list_ad_student(Request $request)
                 ->leftJoin('education', function ($join) {
                     $join->on('admissions.id', '=', 'education.student_id');
                 })
+                ->orderBy('id', 'DESC')
                 ->select(
                     'admissions.*', 
                     'colleges.name as departmentname',
@@ -58,8 +69,25 @@ public function list_ad_student(Request $request)
         if (!empty($request->department)) {
             $query->where('admissions.department', $request->department);
         }
-        if (!empty($request->regular)) {
-            $query->where('admissions.admission_reg', $request->regular);
+        if (!empty($request->marksheet_12th)) {
+            $query->where('admissions.marksheet_12th', $request->marksheet_12th);
+        }
+        if (!empty($request->marksheet_10th)) {
+            $query->where('admissions.10th_marksheet', $request->marksheet_10th);
+        }
+        if (!empty($request->marksheet_11th)) {
+            $query->where('admissions.11th_marksheet', $request->marksheet_11th);
+        }
+        if (!empty($request->graduate)) {
+            $query->where('admissions.graduate', $request->graduate);
+        }
+       
+        if (!empty($start_date) && !empty($end_date)) {
+            $query->whereBetween(\DB::raw("DATE(admissions.date)"), [$start_date, $end_date]);
+        } elseif (!empty($start_date)) {
+            $query->whereDate('admissions.date', '>=', $start_date);
+        } elseif (!empty($end_date)) {
+            $query->whereDate('admissions.date', '<=', $end_date);
         }
 
         return DataTables::of($query)

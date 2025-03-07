@@ -13,12 +13,12 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    @if (Auth::user()->role == 'admin')
+
       <section class="content">
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
           <div class="row">
-           
+               @if (Auth::user()->role == 'admin')
         <div class="col-lg-3 col-6">
               <!-- small box -->
              <div class="small-box bg-warning-subtle">
@@ -45,6 +45,7 @@
                 </div>
               </div>
             </div>
+            @endif
           <!-- ./col -->
             <div class="col-lg-3 col-6">
               <!-- small box -->
@@ -58,11 +59,24 @@
                 </div>
               </div>
             </div>
+
+             <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-warning">
+                <div class="inner">
+                  <h3>{{ $staff }}</h3>
+                  <p>Staff</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+              </div>
+            </div>
            
           </div>
           <!-- /.row -->
         </div><!-- /.container-fluid -->
       </section>
-    @endif
+    
   </div>
 @endsection

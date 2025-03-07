@@ -58,7 +58,7 @@
 
                  <div class="col-md-3 mb-3">
                   <label for="name">Admission Date:</label><br>
-                  <input type="date" class="form-control"  required name="date" placeholder="Name of the domain">
+                  <input type="date" class="form-control"  required name="date" >
                 </div>
                  <div class="col-md-3 mb-3">
                 <label for="name">Type Of Admission:</label><br>
@@ -163,7 +163,7 @@
                  <!--others-->
                    <div class="col-md-3 mb-3" style="display:none;"id="com_others">
                   <label for="name">Others:</label><br>
-                  <input type="text" class="form-control" id="other_community" required name="com_others">
+                  <input type="text" class="form-control" id="other_community"  name="com_others">
                 </div>
 
                 <!--address-->
@@ -330,7 +330,7 @@
                      <hr>
                   </div>
 
-                <!-- Education Deatils -->
+                <!-- ceretificate Deatils -->
 
             <div class="container">
               <div class="row">

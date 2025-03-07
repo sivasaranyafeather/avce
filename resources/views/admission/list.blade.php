@@ -50,6 +50,7 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                         <th>Action</th>
                                         <th>Name</th>
                                         <th>Register No</th>
                                         <th>Admission Date</th>
@@ -61,7 +62,7 @@
                                         <th>Referred By</th>
                                         <th>Referred By(Name):</th>
                                         <th>Transport</th>
-                                        <th>Action</th>
+                                       
                                     </tr>
                                 </thead>
                             </table>
@@ -133,6 +134,7 @@
             },
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false }, 
+                { data: 'action', name: 'action', orderable: false, searchable: false },
                 { data: 'name', name: 'name' },
                 { data: 'reg_no', name: 'reg_no' },
                 { data: 'date', name: 'date' },
@@ -144,7 +146,7 @@
                 { data: 'referred_by', name: 'referred_by' },
                 { data: 'ref_name', name: 'ref_name' },
                 { data: 'transport', name: 'transport' },
-                { data: 'action', name: 'action', orderable: false, searchable: false }
+                
             ]
         });
 

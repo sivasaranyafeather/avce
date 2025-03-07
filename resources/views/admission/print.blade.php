@@ -150,9 +150,24 @@
                     </tr>
                     <tr>
                       <th colspan="2" style="background-color:#f5b041">Refered By: </th>
-                      <td class="text-center" colspan="3" style="font-weight:700;color:#c52c09;background-color:#f5b041">{{$data->ref_name}}</td>
+                      <td class="text-center" colspan="3" style="font-weight:700;color:#c52c09;background-color:#f5b041">
+                        <?php
+                        $dep = DB::table('staff')->where('id',$data->staff_name)->first();
+                        ?>
+                      @if($data->referred_by == 'staff')
+                       {{$dep->name}}
+                        @else
+                         {{$data->ref_name}}
+                        @endif
+                      </td>
                       <th style="background-color:#f5b041;background-color:#f5b041">Contact Number</th>
-                      <td colspan="3" style="font-weight:700;color:#c52c09;background-color:#f5b041">{{$data->con_number}}</td>
+                      <td colspan="3" style="font-weight:700;color:#c52c09;background-color:#f5b041">
+                         @if($data->referred_by == 'staff')
+                          {{$data->staff_number}}
+                        @else
+                          {{$data->con_number}}
+                        @endif
+                       </td>
                     </tr>
                     <tr class="text-center">
                       <th>Direct</th>

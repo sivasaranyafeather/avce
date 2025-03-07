@@ -14,7 +14,7 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admission;
 use App\Models\College;
-
+use App\Models\Staff;
 
 class AuthController extends Controller
 {
@@ -55,7 +55,8 @@ class AuthController extends Controller
       $users = User::count();
       $admission = Admission::count();
       $college = College::count();
-      return view('control.dashboard')->with(compact('active','users','admission','college'));
+      $staff = Staff::count();
+      return view('control.dashboard')->with(compact('active','users','admission','college','staff'));
     }
     Session::flash('errormessage', "Opps! You do not have Access. Login to Gain Access");
     return redirect("login");

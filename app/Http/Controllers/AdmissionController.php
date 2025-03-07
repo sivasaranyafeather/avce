@@ -140,8 +140,9 @@ class AdmissionController extends Controller
     {
        $active = 'list_admission';
        $data = Admission::find($id);
-     $department = College::get();
-      return view('admission.edit')->with(compact('active','department','data'));
+       $department = College::get();
+       $staff = Staff::get();
+      return view('admission.edit')->with(compact('active','department','data','staff'));
     }
 
     /**
@@ -169,6 +170,7 @@ class AdmissionController extends Controller
         'contact_number'   => $request['contact_number'],
         'alternative_number'   => $request['alternative_number'],
         'community'   => $request['community'],
+        'com_others' => $request['com_others'],
         'house_no'   => $request['house_no'],
         'street_name'   => $request['street_name'],
         'place'   => $request['place'],
@@ -179,6 +181,7 @@ class AdmissionController extends Controller
         'maths'   => $request['maths'],
         'physics'   => $request['physics'],
         'chemistry'   => $request['chemistry'],
+        'hsc_percentage'   => $request['hsc_percentage'],
         'v_sem'   => $request['v_sem'],
         'vi_sem'   => $request['vi_sem'],
         'total'   => $request['total'],
@@ -186,12 +189,28 @@ class AdmissionController extends Controller
         'referred_by'   => $request['referred_by'],
         'ref_name'   => $request['ref_name'],
         'con_number'   => $request['con_number'],
+        'marksheet_12th' => $request->has('marksheet_12th') ? 'yes' : 'no',
+        '12th_temp' => $request->has('12th_temp') ? 'yes' : 'no',
+        '10th_marksheet' => $request->has('10th_marksheet') ? 'yes' : 'no',
+        '11th_marksheet' => $request->has('11th_marksheet') ? 'yes' : 'no',
+        'tc' => $request->has('tc') ? 'yes' : 'no',
+        'community_cer' => $request->has('community_cer') ? 'yes' : 'no',
+        'income' => $request->has('income') ? 'yes' : 'no',
+        'graduate' => $request->has('graduate') ? 'yes' : 'no',
         'transport'   => $request['transport'],
+        'boarding_point'   => $request['boarding_point'],
         'fg'   => $request['fg'],
         'Sc_st'   => $request['sc_st'],
         'bc'   => $request['bc'],
         'mbc'   => $request['mbc'],
         'oc'   => $request['oc'],
+        'tution_fees'   => $request['tution_fees'],
+        'stationary'   => $request['stationary'],
+        'rra'   => $request['rra'],
+        'exam_fees'   => $request['exam_fees'],
+        'transport_fees'   => $request['transport_fees'],
+        'fg_fees'   => $request['fg_fees'],
+        'bc_amount'   => $request['bc_amount'],
 
     
     ]);
@@ -221,6 +240,7 @@ class AdmissionController extends Controller
     $query = Admission::leftJoin('colleges', function($join) {
                     $join->on('admissions.department', '=', 'colleges.id'); 
                  })
+                 ->orderBy('id', 'DESC')
                 ->select('admissions.*', 'colleges.name as departmentname');
 
                if (!empty($request->admission_type)) {
@@ -238,6 +258,7 @@ class AdmissionController extends Controller
                 leftJoin('colleges', function($join) {
                     $join->on('admissions.department', '=', 'colleges.id'); 
                  })
+                 ->orderBy('id', 'DESC')
                 ->select('admissions.*', 'colleges.name as departmentname');
 
                if (!empty($request->admission_type)) {

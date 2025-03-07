@@ -6,8 +6,20 @@
         <div class="container">
          <div class="row">
          <div class="col-md-3">
-       
+       <label for="name">From Date:</label><br>
+     <input type="date" class="form-control"  required name="date" id="start_date">
  </div>
+  <div class="col-md-3 mb-3">
+     <label for="name">To Date:</label><br>
+     <input type="date" class="form-control"  required name="date" id="end_date" >
+                <!-- <label for="name">Regular / Lateral:</label><br>
+                 <select name="admission_reg" class="form-control" id="regular">
+                <option value="" >Please Select</option>
+                  <option value="regular">Regular</option>
+                  <option value="lateral">Lateral</option>
+                 </select>
+                </div> -->
+  </div>
  <div class="col-md-3">
     <label for="name">Type Of Admission:</label><br>
     <select name="admission_type" class="form-control" id="admission_type">
@@ -17,25 +29,47 @@
     </select>
 </div>
 <div class="col-md-3">
-     <label for="name">Branch Opted(Department):</label><br>
-                
-                 <select name="department" class="form-control  select2" id="department">
-                    <option value="">Select Department</option>
-                    @foreach($department as $dep) 
-                  <option value="{{$dep->id}}">{{$dep->name}}</option>
-                  @endforeach
-                  
-                </select>
+   <label for="name">Branch Opted(Department):</label><br>
+     <select name="department" class="form-control  select2" id="department">
+       <option value="">Select Department</option>
+          @foreach($department as $dep) 
+           <option value="{{$dep->id}}">{{$dep->name}}</option>
+         @endforeach
+     </select>
 </div>
-  <div class="col-md-3 mb-3">
-                <label for="name">Regular / Lateral:</label><br>
-                 <select name="admission_reg" class="form-control" id="regular">
-                <option value="" >Please Select</option>
-                  <option value="regular">Regular</option>
-                  <option value="lateral">Lateral</option>
-                 </select>
-                </div>
-  </div>
+<div class="col-md-3">
+   <label for="name">12th Marksheet:</label><br>
+     <select name="" class="form-control  select2" id="marksheet_12th">
+       <option value="">Please Select</option>
+       <option value="yes">Yes</option>
+       <option value="no">No</option>
+     </select>
+</div>
+<div class="col-md-3">
+   <label for="name">10th Marksheet:</label><br>
+     <select name="" class="form-control  select2" id="10th_marksheet">
+       <option value="">Please Select</option>
+       <option value="yes">Yes</option>
+       <option value="no">No</option>
+     </select>
+</div>
+<div class="col-md-3">
+   <label for="name">11th Marksheet:</label><br>
+     <select name="" class="form-control  select2" id="marksheet_11th">
+       <option value="">Please Select</option>
+       <option value="yes">Yes</option>
+       <option value="no">No</option>
+     </select>
+</div>
+<div class="col-md-3">
+   <label for="name">First Graduate:</label><br>
+     <select name="" class="form-control  select2" id="graduate">
+       <option value="">Please Select</option>
+       <option value="yes">Yes</option>
+       <option value="no">No</option>
+     </select>
+</div>
+ 
 
         </div>
 
@@ -118,17 +152,11 @@
 <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
 <script type="text/javascript">
-  (function($) {
+ (function($) {
     $(document).ready(function() {
-        
         var table = $('#admission-table').DataTable({
             dom: 'Blfrtip',
-            buttons: [  
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5'
-            ],
+            buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'],
             processing: true,
             serverSide: true,
             lengthMenu: [
@@ -137,11 +165,16 @@
             ],
             order: [[0, "asc"]],
             ajax: {
-                url: "{{ route('list_ad_student') }}",
+                url: "{{ route('list_ad_student') }}", 
                 data: function(d) {
                     d.admission_type = $('#admission_type').val(); 
                     d.department = $('#department').val(); 
-                    d.regular = $('#regular').val();
+                    d.marksheet_12th = $('#marksheet_12th').val(); 
+                    d.marksheet_10th = $('#10th_marksheet').val(); 
+                    d.marksheet_11th = $('#marksheet_11th').val(); 
+                    d.graduate = $('#graduate').val(); 
+                    d.start_date = $('#start_date').val(); 
+                    d.end_date = $('#end_date').val(); 
                 }
             },
             columns: [
@@ -163,7 +196,7 @@
                 { data: 'fg', name: 'fg' },
                 { data: 'bc', name: 'bc' },
                 { data: 'mbc', name: 'mbc' },
-                { data: 'Sc_st', name: 'Sc_st' },
+                { data: 'Sc_st', name: 'Sc_st' }, 
                 { data: 'transport_fees', name: 'transport_fees' },
                 { data: 'tution_fees', name: 'tution_fees' },
                 { data: 'tc', name: 'tc' },
@@ -172,18 +205,26 @@
                 { data: '10th_marksheet', name: '10th_marksheet' },
                 { data: 'community_cer', name: 'community_cer' },
                 { data: 'graduate', name: 'graduate' },
-                { data: 'income', name: 'income' },
-               
-                
+                { data: 'income', name: 'income' }
             ]
         });
 
       
-        $('#admission_type,#department,#regular').on('change', function() {
+        $("#start_date").change(function() {
+            var start_date = $(this).val();
+            $("#end_date").attr("min", start_date).val(""); 
+            
             table.ajax.reload();
+        });
+
+        
+        $('#admission_type, #department, #regular, #marksheet_12th, #10th_marksheet, #marksheet_11th, #graduate, #end_date')
+            .on('change', function() {
+                table.ajax.reload();
         });
     });
 })(jQuery);
+
 
 </script>
 
