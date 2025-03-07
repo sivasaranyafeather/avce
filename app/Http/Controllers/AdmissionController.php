@@ -91,18 +91,34 @@ class AdmissionController extends Controller
         'con_number'   => $data['con_number'],
         'staff_name'   => $data['staff_name'],
         'staff_number'   => $data['staff_number'],
+        'marksheet_12th' => $request->has('marksheet_12th') ? 'yes' : 'no',
+        '12th_temp' => $request->has('12th_temp') ? 'yes' : 'no',
+        '10th_marksheet' => $request->has('10th_marksheet') ? 'yes' : 'no',
+        '11th_marksheet' => $request->has('11th_marksheet') ? 'yes' : 'no',
+        'tc' => $request->has('tc') ? 'yes' : 'no',
+        'community_cer' => $request->has('community_cer') ? 'yes' : 'no',
+        'income' => $request->has('income') ? 'yes' : 'no',
+        'graduate' => $request->has('graduate') ? 'yes' : 'no',
         'transport'   => $data['transport'],
+        'boarding_point'   => $data['boarding_point'],
         'fg'   => $data['fg'],
         'Sc_st'   => $data['sc_st'],
         'bc'   => $data['bc'],
         'mbc'   => $data['mbc'],
         'oc'   => $data['oc'],
+        'tution_fees'   => $data['tution_fees'],
+        'stationary'   => $data['stationary'],
+        'rra'   => $data['rra'],
+        'exam_fees'   => $data['exam_fees'],
+        'transport_fees'   => $data['transport_fees'],
+        'fg_fees'   => $data['fg_fees'],
+        'bc_amount'   => $data['bc_amount'],
         'user_id' => $user_id,
 
     
     ]);
 
-    Session::flash('successmessage', "College Added Successfully !");
+    Session::flash('successmessage', "Admission Added Successfully !");
     return redirect()->back();
     
     }
@@ -237,6 +253,7 @@ class AdmissionController extends Controller
             }
 
     return DataTables::of($query) 
+       ->addIndexColumn()
        ->addColumn('action', function ($result) {
     return '
         <a href="' . url('/edit_register/' . $result->id) . '" class="btn btn-primary" 

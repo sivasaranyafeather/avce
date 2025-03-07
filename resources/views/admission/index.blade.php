@@ -336,8 +336,32 @@
               <div class="row">
                 <h4 class="text-center">Certificate Details</h4>
                 <div class="col-md-3 mb-3">
-                <label for="name">12th marksheet(original):</label><br>
-                 <input type="checkbox" id="12th_marksheet" name="12th_marksheet" value="12th_marksheet">
+                <!-- <label for="name"></label><br> -->
+                 <input type="checkbox" id="12th_marksheet" name="marksheet_12th" value="yes"> <b>12th Marksheet(original)</b>
+                 </div>
+                 <div class="col-md-3 mb-3">
+                <input type="checkbox" id="12th_temp" name="12th_temp" value="yes"> <b>12th Marksheet(Temp)</b>
+                 </div>
+                 <div class="col-md-3 mb-3">
+                <input type="checkbox" id="10th_marksheet" name="10th_marksheet" value="yes">  <b>10th Marksheet</b>
+                 </div>
+                 <div class="col-md-3 mb-3">
+                <input type="checkbox" id="11th_marksheet" name="11th_marksheet" value="yes"> <b>11th Marksheet</b>
+                 </div>
+                </div>
+                <div class="row">
+                <div class="col-md-3 mb-3">
+                <!-- <label for="name"></label><br> -->
+                 <input type="checkbox" id="tc" name="tc" value="yes"> <b>Transfer Certificate</b>
+                 </div>
+                 <div class="col-md-3 mb-3">
+                <input type="checkbox" id="community_cer" name="community_cer" value="yes"> <b>Community</b>
+                 </div>
+                 <div class="col-md-3 mb-3">
+                <input type="checkbox" id="income" name="income" value="yes">  <b>Income</b>
+                 </div>
+                 <div class="col-md-3 mb-3">
+                <input type="checkbox" id="graduate" name="graduate" value="yes"> <b>First Graduate</b>
                  </div>
                   </div>
                 <hr>
@@ -353,7 +377,12 @@
                 <select class="form-control" name="transport" id="transport">
                    <option value="hostel">Hostel</option>
                    <option value="dayscholar">Dayscholar</option>
+                   <option value="transport">Transport</option>
                 </select>
+                 </div>
+                 <div class="col-md-3 mb-3">
+                   <label for="name">Boarding Point:</label><br>
+                <input type="Text" id="boarding_point" class="form-control" name="boarding_point" value=""> 
                  </div>
                   <div class="col-md-3 mb-3">
                 <label for="name">FG:</label><br>
@@ -390,6 +419,45 @@
                    <option value="no">No</option>
                 </select>
                  </div>
+
+</div>
+<hr>
+</div>
+<!-- fees -->
+   <!-- Scholarship Deatils -->
+
+<div class="container">
+    <div class="row">
+      <h4 class="text-center">Fees Details</h4>
+      <div class="col-md-3 mb-3">
+       <label for="name">Tution Fees:</label><br>
+       <input type="number" class="form-control"  id="tution_fees"  name="tution_fees" min="0">
+      </div>
+      <div class="col-md-3 mb-3">
+       <label for="name">Stationary Fees:</label><br>
+       <input type="number" class="form-control"  id="stationary"  name="stationary" min="0">
+      </div>
+      <div class="col-md-3 mb-3">
+       <label for="name">RRA:</label><br>
+       <input type="number" class="form-control"  id="rra"  name="rra" min="0">
+      </div>
+      <div class="col-md-3 mb-3">
+       <label for="name">Exam Fees:</label><br>
+       <input type="number" class="form-control"  id="exam_fees"  name="exam_fees" min="0">
+      </div>
+      <div class="col-md-3 mb-3">
+       <label for="name">Transport Fees:</label><br>
+       <input type="number" class="form-control"  id="transport_fees"  name="transport_fees" min="0">
+      </div>
+      <div class="col-md-3 mb-3">
+       <label for="name">First Graduate Amount:</label><br>
+       <input type="number" class="form-control"  id="fg_fees"  name="fg_fees" min="0">
+      </div>
+      <div class="col-md-3 mb-3">
+       <label for="name">BC Amount:</label><br>
+       <input type="number" class="form-control"  id="bc_amount"  name="bc_amount" min="0">
+      </div>
+
 
 </div>
 </div>

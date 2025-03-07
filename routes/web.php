@@ -8,7 +8,7 @@ use App\Http\Controllers\CollegeController;
 use App\Http\Controllers\AdmissionController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\EducationController;
-
+use App\Http\Controllers\ReportController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -64,7 +64,7 @@ Route::get('/data-all-college', [CollegeController::class, 'data_all_college'])-
  Route::get('/index_admission',[AdmissionController::class,'index'])->name('index_admission');
  Route::post('/store_admission',[AdmissionController::class,'store'])->name('admission.store');
  Route::get('/show_admission',[AdmissionController::class,'show'])->name('show_admission');
-
+ 
  // Admission AJAX Data
 Route::get('/list_admission', [AdmissionController::class, 'list_admission'])->name('list_admission');
 //edit admission
@@ -74,7 +74,6 @@ Route::post('/update_register', [AdmissionController::class, 'update'])->name('a
 Route::get('/delete_register/{id}', [AdmissionController::class, 'destroy'])->name('delete_register');
 //admission print
 Route::get('/print_register/{id}', [AdmissionController::class, 'print'])->name('print_register');
-});
 
 //Staff 
 Route::get('/index_staff',[StaffController::class,'index'])->name('index_staff');
@@ -93,4 +92,11 @@ Route::get('/delete_staff/{id}', [StaffController::class, 'destroy'])->name('del
  Route::get('/delete_education/{id}', [EducationController::class, 'destroy'])->name('delete_education');
  // education AJAX Data
  Route::get('/data-all-education', [EducationController::class, 'data_all_education'])->name('data_all_education');
+
+ //Report
+ Route::get('/list_student',[ReportController::class,'show'])->name('list_student');
+ //student AJAX Data
+Route::get('/list_ad_student', [ReportController::class, 'list_ad_student'])->name('list_ad_student');
+
+});
 

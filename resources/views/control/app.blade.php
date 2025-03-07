@@ -65,6 +65,13 @@
     background-color:#59a8c0;
     border-color: #59a8c0;
 }
+.print_table .table td{
+  font-weight:600;
+}
+.print_table .table th{
+  font-weight:500;
+  font-size:0.8rem;
+}
   </style>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
@@ -150,11 +157,22 @@
                  </p>
               </a>
             </li>
+
              <li class="nav-item">
               <a href="{{ route('index_staff') }}" class="nav-link @if ($active == 'staff') active @endif">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                  Staff Details
+                <span class="badge badge-info right"></span>
+                 </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{{ route('list_student') }}" class="nav-link @if ($active == 'list_student') active @endif">
+                <i class="nav-icon fas fa-award"></i>
+                <p>
+                 Report
                 <span class="badge badge-info right"></span>
                  </p>
               </a>

@@ -131,6 +131,12 @@
                 <p>Staff Details</p>
               </a>
   </li>
+  <li class="nav-item">    
+              <a href="{{ route('list_student') }}" class="nav-link @if ($active == 'list_student') active @endif">
+                <i class="nav-icon fas fa-users"></i>
+                <p>Report</p>
+              </a>
+  </li>
             
             
           </ul>

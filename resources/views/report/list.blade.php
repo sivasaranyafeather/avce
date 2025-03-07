@@ -6,9 +6,7 @@
         <div class="container">
          <div class="row">
          <div class="col-md-3">
-         <a href="{{ route('index_admission') }}" class="btn btn-success btn-val"> Add Admission </a>
-   
-</button>
+       
  </div>
  <div class="col-md-3">
     <label for="name">Type Of Admission:</label><br>
@@ -50,18 +48,33 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
                                         <th>Register No</th>
                                         <th>Admission Date</th>
                                         <th>Type Of Admission:</th>
                                         <th>Department</th>
-                                        <th>Regular / Lateral</th>
-                                        <th>Status</th>
-                                        <th>Marks Obtained</th>
-                                        <th>Referred By</th>
-                                        <th>Referred By(Name):</th>
-                                        <th>Transport</th>
-                                        <th>Action</th>
+                                        <th>Name</th>
+                                        <th>UserId</th>
+                                        <th>Password</th>
+                                        <th>School Name</th>
+                                        <th>Parent Name</th>
+                                        <th>Address</th>
+                                        <th>Contact No</th>
+                                        <th>Alternate No</th>
+                                        <th>Referer Name</th>
+                                        <th>Bus Route:</th>
+                                        <th>FG</th>
+                                        <th>BC</th>
+                                        <th>MBC</th>
+                                        <th>SC</th>
+                                        <th>BUS Fees</th>
+                                        <th>Tution Fees</th>
+                                        <th>Tc</th>
+                                        <th>12</th>
+                                        <th>11</th>
+                                        <th>10</th>
+                                        <th>Community</th>
+                                        <th>FG</th>
+                                        <th>Income</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -124,7 +137,7 @@
             ],
             order: [[0, "asc"]],
             ajax: {
-                url: "{{ route('list_admission') }}",
+                url: "{{ route('list_ad_student') }}",
                 data: function(d) {
                     d.admission_type = $('#admission_type').val(); 
                     d.department = $('#department').val(); 
@@ -133,18 +146,35 @@
             },
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false }, 
-                { data: 'name', name: 'name' },
                 { data: 'reg_no', name: 'reg_no' },
                 { data: 'date', name: 'date' },
                 { data: 'admission_type', name: 'admission_type' },
                 { data: 'departmentname', name: 'departmentname' },
-                { data: 'admission_reg', name: 'admission_reg' },
-                { data: 'status', name: 'status' },
-                { data: 'marks', name: 'marks' },
-                { data: 'referred_by', name: 'referred_by' },
-                { data: 'ref_name', name: 'ref_name' },
-                { data: 'transport', name: 'transport' },
-                { data: 'action', name: 'action', orderable: false, searchable: false }
+                { data: 'name', name: 'name' },
+                { data: 'username', name: 'username' },
+                { data: 'password', name: 'password' },
+                { data: 'school_polytechnic', name: 'school_polytechnic' },
+                { data: 'father_name', name: 'father_name' },
+                { data: 'address', name: 'address' },
+                { data: 'contact_number', name: 'contact_number' },
+                { data: 'alternative_number', name: 'alternative_number' },
+                { data: 'reference', name: 'reference' },
+                { data: 'boarding_point', name: 'boarding_point' },
+                { data: 'fg', name: 'fg' },
+                { data: 'bc', name: 'bc' },
+                { data: 'mbc', name: 'mbc' },
+                { data: 'Sc_st', name: 'Sc_st' },
+                { data: 'transport_fees', name: 'transport_fees' },
+                { data: 'tution_fees', name: 'tution_fees' },
+                { data: 'tc', name: 'tc' },
+                { data: 'marksheet_12th', name: 'marksheet_12th' },
+                { data: '11th_marksheet', name: '11th_marksheet' },
+                { data: '10th_marksheet', name: '10th_marksheet' },
+                { data: 'community_cer', name: 'community_cer' },
+                { data: 'graduate', name: 'graduate' },
+                { data: 'income', name: 'income' },
+               
+                
             ]
         });
 

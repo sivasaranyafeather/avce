@@ -52,12 +52,28 @@ return new class extends Migration
             $table->string('con_number')->nullable();
             $table->string('staff_name')->nullable();
             $table->string('staff_number')->nullable();
+            $table->string('marksheet_12th')->default(no);
+            $table->string('12th_temp')->default(no);
+            $table->string('10th_marksheet')->default(no);
+            $table->string('11th_marksheet')->default(no);
+            $table->string('tc')->default(no);
+            $table->string('community_cer')->default(no);
+            $table->string('income')->default(no);
+            $table->string('graduate')->default(no);
             $table->string('transport')->nullable();
+            $table->string('boarding_point')->nullable();
             $table->string('fg')->nullable();
             $table->string('Sc_st');
             $table->string('bc');
             $table->string('mbc');
             $table->string('oc');
+            $table->decimal('tution_fees',10, 2)->nullable();
+            $table->decimal('stationary',10, 2)->nullable();
+            $table->decimal('rra',10, 2)->nullable();
+            $table->decimal('exam_fees',10, 2)->nullable();
+            $table->decimal('transport_fees',10, 2)->nullable();
+            $table->decimal('fg_fees',10, 2)->nullable();
+            $table->decimal('bc_amount',10, 2)->nullable();
             $table->integer('user_id');
 
         });

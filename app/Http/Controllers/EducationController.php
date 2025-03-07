@@ -72,6 +72,7 @@ if ($request->ajax()) {
 
 
         return DataTables::of($query)
+            ->addIndexColumn()
             ->addColumn('action', function ($query) {
                 return '
                     <a href="javascript:void(0)" data-id="' . $query->id . '" class="editeducation btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit!">
